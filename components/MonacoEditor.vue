@@ -14,42 +14,54 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void
+  (e: 'error', message: string): void
 }>()
 
 const editorContainer = ref<HTMLElement | null>(null)
 let editor: monaco.editor.IStandaloneCodeEditor | null = null
 
+const DEFAULT_EDITOR_OPTIONS = {
+  language: 'markdown',
+  theme: 'vs-dark',
+  automaticLayout: true,
+  minimap: { enabled: false },
+  scrollBeyondLastLine: false,
+  fontSize: 14,
+  fontFamily: 'Fira Code, monospace',
+  lineNumbers: 'off',
+  wordWrap: 'on',
+  renderWhitespace: 'selection',
+  contextmenu: true,
+  quickSuggestions: true,
+  suggestOnTriggerCharacters: true,
+  formatOnPaste: true,
+  formatOnType: true,
+}
+
 onMounted(async () => {
   if (!editorContainer.value) return
 
-  // Initialize Monaco
-  await monaco.init()
+  try {
+    // Initialize Monaco
+    await monaco.init()
 
-  // Create editor instance
-  editor = monaco.editor.create(editorContainer.value, {
-    value: props.modelValue,
-    language: props.language || 'markdown',
-    theme: props.theme || 'vs-dark',
-    automaticLayout: true,
-    minimap: { enabled: false },
-    scrollBeyondLastLine: false,
-    fontSize: 14,
-    fontFamily: 'Fira Code, monospace',
-    lineNumbers: 'off',
-    wordWrap: 'on',
-    renderWhitespace: 'selection',
-    contextmenu: true,
-    quickSuggestions: true,
-    suggestOnTriggerCharacters: true,
-    formatOnPaste: true,
-    formatOnType: true,
-  })
+    // Create editor instance
+    editor = monaco.editor.create(editorContainer.value, {
+      ...DEFAULT_EDITOR_OPTIONS,
+      value: props.modelValue,
+      language: props.language || DEFAULT_EDITOR_OPTIONS.language,
+      theme: props.theme || DEFAULT_EDITOR_OPTIONS.theme,
+    })
 
   // Set up change listener
   editor.onDidChangeModelContent(() => {
     const value = editor?.getValue() || ''
     emit('update:modelValue', value)
   })
+  } catch (error) {
+    console.error("Failed to initialize editor:", error)
+    emit('error', "Failed to initialize editor.")
+  }
 })
 
 // Watch for external value changes

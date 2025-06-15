@@ -7,7 +7,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "test": "vitest"
   },
   "dependencies": {
     "@monaco-editor/loader": "^1.5.0",
@@ -18,10 +19,16 @@
     "highlight.js": "^11.11.1",
     "marked": "^15.0.12",
     "nuxt": "^3.17.4",
+    "pinia": "^3.0.3",
     "vue": "^3.5.15",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.16"
+    "@pinia/testing": "^1.0.2",
+    "@tailwindcss/typography": "^0.5.16",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "@vue/test-utils": "^2.4.6",
+    "jsdom": "^26.1.0",
+    "vitest": "^3.2.3"
   }
 }
