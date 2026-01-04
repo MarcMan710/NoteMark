@@ -114,7 +114,5 @@ export const useNotesStore = defineStore('notes', {
     }
   },
 
-  persist: {
-    storage: persistedState.localStorage
-  }
+  persist: true
 }) 

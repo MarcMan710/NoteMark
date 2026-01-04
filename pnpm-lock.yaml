@@ -35,6 +35,9 @@ importers:
       pinia:
         specifier: ^3.0.3
         version: 3.0.3(typescript@5.8.3)(vue@3.5.16(typescript@5.8.3))
+      pinia-plugin-persistedstate:
+        specifier: ^4.7.1
+        version: 4.7.1(@nuxt/kit@3.17.4(magicast@0.3.5))(@pinia/nuxt@0.11.0(magicast@0.3.5)(pinia@3.0.3(typescript@5.8.3)(vue@3.5.16(typescript@5.8.3))))(pinia@3.0.3(typescript@5.8.3)(vue@3.5.16(typescript@5.8.3)))
       vue:
         specifier: ^3.5.15
         version: 3.5.16(typescript@5.8.3)
@@ -3046,6 +3049,20 @@ packages:
   picomatch@4.0.2:
     resolution: {integrity: sha512-M7BAV6Rlcy5u+m6oPhAPFgJTzAioX/6B0DxyvDlo9l8+T3nLKbrczg2WLUyzd45L8RqfUMyGPzekbMvX2Ldkwg==}
     engines: {node: '>=12'}
+
+  pinia-plugin-persistedstate@4.7.1:
+    resolution: {integrity: sha512-WHOqh2esDlR3eAaknPbqXrkkj0D24h8shrDPqysgCFR6ghqP/fpFfJmMPJp0gETHsvrh9YNNg6dQfo2OEtDnIQ==}
+    peerDependencies:
+      '@nuxt/kit': '>=3.0.0'
+      '@pinia/nuxt': '>=0.10.0'
+      pinia: '>=3.0.0'
+    peerDependenciesMeta:
+      '@nuxt/kit':
+        optional: true
+      '@pinia/nuxt':
+        optional: true
+      pinia:
+        optional: true
 
   pinia@3.0.3:
     resolution: {integrity: sha512-ttXO/InUULUXkMHpTdp9Fj4hLpD/2AoJdmAbAeW2yu1iy1k+pkFekQXw5VpC0/5p51IOR/jDaDRfRWRnMMsGOA==}
@@ -7460,6 +7477,14 @@ snapshots:
   picomatch@2.3.1: {}
 
   picomatch@4.0.2: {}
+
+  pinia-plugin-persistedstate@4.7.1(@nuxt/kit@3.17.4(magicast@0.3.5))(@pinia/nuxt@0.11.0(magicast@0.3.5)(pinia@3.0.3(typescript@5.8.3)(vue@3.5.16(typescript@5.8.3))))(pinia@3.0.3(typescript@5.8.3)(vue@3.5.16(typescript@5.8.3))):
+    dependencies:
+      defu: 6.1.4
+    optionalDependencies:
+      '@nuxt/kit': 3.17.4(magicast@0.3.5)
+      '@pinia/nuxt': 0.11.0(magicast@0.3.5)(pinia@3.0.3(typescript@5.8.3)(vue@3.5.16(typescript@5.8.3)))
+      pinia: 3.0.3(typescript@5.8.3)(vue@3.5.16(typescript@5.8.3))
 
   pinia@3.0.3(typescript@5.8.3)(vue@3.5.16(typescript@5.8.3)):
     dependencies:
